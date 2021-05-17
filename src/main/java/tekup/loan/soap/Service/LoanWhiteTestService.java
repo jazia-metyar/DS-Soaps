@@ -37,7 +37,6 @@ public class LoanWhiteTestService {
         examList.add(exam2);
 // date
 
-
         WhiteTestResponse whiteTestResponse=new ObjectFactory().createWhiteTestResponse();
         whiteTestResponse.setStudent(studentList.get(studentRequest.getStudentId()-1));
         whiteTestResponse.setExam(examList.get(studentRequest.getStudentId()-1));
@@ -46,14 +45,5 @@ public class LoanWhiteTestService {
     }
 
 
-
- public Student createStudent(Student student) {
-        return student;
-
-    }
-    public Exam createExam(Exam exam) {
-        return exam;
-
-    }
 }
 
