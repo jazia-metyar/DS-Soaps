@@ -22,11 +22,7 @@ public class LoanWhiteTestEndPoint {
     public WhiteTestResponse PostWhitTest(@RequestPayload StudentRequest studentRequest) {
         return service.createWhitTest(studentRequest);
     }
- /* @PayloadRoot(namespace = nameSpace, localPart ="Exam")
-    @ResponsePayload
-    public Exam PostExam(@RequestPayload Exam exam) {
-        return service.createExam(exam);
-    }*/
+
 
 }
 
