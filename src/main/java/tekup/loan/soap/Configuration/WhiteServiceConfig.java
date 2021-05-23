@@ -1,5 +1,6 @@
 package tekup.loan.soap.Configuration;
 
+
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -13,29 +14,40 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @EnableWs
 @Configuration
-public class LoanSOAPConfig {
+public class WhiteServiceConfig {
+
+
+
 	@Bean
-	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet (ApplicationContext context){
+	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context){
+
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(context);
 		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean<MessageDispatcherServlet>(servlet, "/ws/*");
+		return new ServletRegistrationBean<MessageDispatcherServlet>(servlet,"/ws/*")	;
+
 	}
-	
-	@Bean(name = "whiteTest" )
+	@Bean
+	public XsdSchema schema() {
+
+
+
+		return new SimpleXsdSchema(new ClassPathResource("whiteTest.xsd"));
+
+	}
+	@Bean(name = "whitetests")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
+
 		DefaultWsdl11Definition defaultWsdl11Definition = new DefaultWsdl11Definition();
-		defaultWsdl11Definition.setPortTypeName("WhiteTestindicator");
+		defaultWsdl11Definition.setPortTypeName("whitetestidentety");
 		defaultWsdl11Definition.setLocationUri("/ws");
-		
 		defaultWsdl11Definition.setTargetNamespace("http://www.tekup.de/soap/models/whitetest");
 		defaultWsdl11Definition.setSchema(schema);
-		
+
+
 		return defaultWsdl11Definition;
 	}
-	
-	@Bean 
-	public XsdSchema schema() {
-		return new SimpleXsdSchema(new ClassPathResource("WhiteTest.xsd"));
-	}
+
+
+
 }
